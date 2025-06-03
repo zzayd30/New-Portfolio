@@ -1,10 +1,12 @@
 "use client";
+
 import { cn } from "@/utils/cn";
 import React, { useEffect, useRef } from "react";
 import { styles } from "@/app/styles";
 import Navbar from "./Navbar";
 import Typed from "typed.js";
 import { OrbitingCirclesDemo } from "@/components/magicui/orbiting-circle-demo";
+import { motion } from "framer-motion";
 
 export function DotBackgroundDemo() {
   const typedRef = useRef(null);
@@ -23,24 +25,52 @@ export function DotBackgroundDemo() {
       typed.destroy();
     };
   }, []);
+
   return (
     <>
-      <Navbar />
+      <motion.div
+        // initial={{ opacity: 0, y: -20 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 1 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.2 }} // re-animate each time it scrolls into view
+        transition={{ duration: 0.8 }}
+      >
+        <Navbar />
+      </motion.div>
+
       <div className="relative flex h-screen w-full items-center justify-center bg-black dark:bg-white">
-        <div
+        {/* Dotted Background */}
+        <motion.div
           className={cn(
             "absolute inset-0",
             "[background-size:20px_20px]",
             "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
             "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]"
           )}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.6 }}
+          transition={{ duration: 1.2 }}
         />
-        {/* Radial gradient for the container to give a faded look */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"></div>
+
+        {/* Radial Fade Mask */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        />
 
         <section className="relative w-full h-screen flex flex-col md:flex-row px-4 md:px-12">
           {/* Left side content */}
-          <div className="flex flex-col justify-center items-start w-full md:w-1/2 pt-24">
+          <motion.div
+            className="flex flex-col justify-center items-start w-full md:w-1/2 pt-24"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="flex flex-row items-start gap-5">
               <div className="flex flex-col justify-center items-center">
                 <div className="w-5 h-5 rounded-full bg-white" />
@@ -62,12 +92,18 @@ export function DotBackgroundDemo() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right side content */}
-          <div className="flex justify-center items-center w-full md:w-1/2 md:pt-24">
+          <motion.div
+            className="flex justify-center items-center w-full md:w-1/2 md:pt-24"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             <OrbitingCirclesDemo />
-          </div>
+          </motion.div>
         </section>
       </div>
     </>
