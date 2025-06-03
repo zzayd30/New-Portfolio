@@ -104,19 +104,20 @@ const projects = [
             "A full-stack e-commerce platform for clothing shopping built using the MERN stack. Includes features like product browsing, cart management, and secure checkout. Also features an admin panel for inventory and order control.",
         tags: [
             {
-                name: "react",
+                name: "MongoDb",
                 color: "white",
             },
             {
-                name: "tailwind",
+                name: "Express.js",
                 color: "white",
             },
             {
-                name: "node",
+                name: "React.js",
                 color: "white",
             },
+            
             {
-                name: "mongodb",
+                name: "Node.js",
                 color: "white",
             },
         ],
@@ -129,16 +130,21 @@ const projects = [
             "A MERN stack web app for managing software agency projects and team collaboration. Supports task assignment, progress tracking, and team updates in real time. Features a responsive UI to enhance project visibility and coordination.",
         tags: [
             {
-                name: "react",
-                color: "blue-text-gradient",
+                name: "MongoDb",
+                color: "white",
             },
             {
-                name: "emailJs",
-                color: "green-text-gradient",
+                name: "Express.js",
+                color: "white",
             },
             {
-                name: "Gsap",
-                color: "pink-text-gradient",
+                name: "React.js",
+                color: "white",
+            },
+            
+            {
+                name: "Node.js",
+                color: "white",
             },
         ],
         image: project2,
@@ -150,20 +156,20 @@ const projects = [
             "A real-time chatting platform built with the MERN stack and WebSocket integration. Enables seamless instant messaging with a clean and responsive user interface. Designed for smooth, engaging conversations in a modern web environment.",
         tags: [
             {
-                name: "react",
-                color: "blue-text-gradient",
+                name: "MongoDb",
+                color: "white",
             },
             {
-                name: "express",
-                color: "white-text-gradient",
+                name: "Express.js",
+                color: "white",
             },
             {
-                name: "node",
-                color: "green-text-gradient",
+                name: "React.js",
+                color: "white",
             },
             {
-                name: "mongodb",
-                color: "green-text-gradient",
+                name: "Sockets",
+                color: "white",
             },
         ],
         image: project2,

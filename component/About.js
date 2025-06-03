@@ -126,17 +126,17 @@ const About = () => {
 
     return (
         <>
-            <div className="flex flex-col bg-gray-950 rounded-lg p-16 lg:flex-row items-start gap-10">
+            <div className="flex flex-col bg-gray-400 rounded-lg p-16 lg:flex-row items-start gap-10">
                 {/* Left Content: Heading + Paragraph */}
                 <div className="flex-1">
                     <div ref={headingRef}>
-                        <p className={styles.sectionSubText}>Introduction</p>
-                        <h2 className={styles.sectionHeadText}>Overview.</h2>
+                        <p className="sm:text-[18px] text-[14px] text-black uppercase tracking-wider">Introduction</p>
+                        <h2 className="text-black font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Overview.</h2>
                     </div>
 
                     <p
                         ref={paragraphRef}
-                        className="mt-4 text-secondary text-[17px] max-w-xl leading-[30px]"
+                        className="mt-4 text-black text-[17px] max-w-xl leading-[30px]"
                     >
                         I'm a passionate software developer with hands-on experience in JavaScript and a strong command of modern frameworks like React, Node.js, and Firebase. I’ve built real-world projects ranging from video calling apps to e-commerce platforms and chat systems. I'm a fast learner who loves solving problems and building intuitive, scalable solutions. Whether it's a web app, a smart system, or a creative idea—let's bring it to life together!
                     </p>

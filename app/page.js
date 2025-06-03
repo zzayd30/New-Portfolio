@@ -7,6 +7,7 @@ import Projects from '@/component/Projects';
 import Contact from '@/component/Contact';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from '@/component/footer';
 
 export default function Page() {
   return (
@@ -17,6 +18,7 @@ export default function Page() {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
       <ToastContainer />
     </>
   )
