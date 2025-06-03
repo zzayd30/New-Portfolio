@@ -126,7 +126,7 @@ const About = () => {
 
     return (
         <>
-            <div className="flex flex-col lg:flex-row items-start gap-10">
+            <div className="flex flex-col bg-gray-950 rounded-lg p-16 lg:flex-row items-start gap-10">
                 {/* Left Content: Heading + Paragraph */}
                 <div className="flex-1">
                     <div ref={headingRef}>
