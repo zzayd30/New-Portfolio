@@ -105,10 +105,8 @@ export function DotBackgroundDemo() {
                 </h1>
                 <span className="text-2xl md:text-3xl text-white">I am&nbsp;</span>
                 <span ref={typedRef} className="text-2xl md:text-3xl text-gray-400"></span>
-                <p className={`${styles.heroSubText} mt-4 text-white`}>
-                  Transform Your Online Presence
-                  <br />
-                  with Custom Web Solutions
+                <p className={`${styles.heroSubText} w-3/4 mt-4 text-white`}>
+                  Transform Your Online Presence with Custom Web Solutions and More
                 </p>
               </div>
             </div>

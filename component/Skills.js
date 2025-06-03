@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
-import { styles } from "@/app/styles";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { styles } from "@/app/styles";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,10 +27,10 @@ const skills = [
 
 const Skills = () => {
     useEffect(() => {
-        const isMobile = window.innerWidth <= 768; // Tailwind's md breakpoint
+        const isMobile = window.innerWidth <= 768;
 
         const ctx = gsap.context(() => {
-            // Headings
+            // Animate headings
             gsap.fromTo(
                 ".skills-headings p",
                 { opacity: 0, y: -20 },
@@ -59,39 +59,42 @@ const Skills = () => {
                     scrollTrigger: {
                         trigger: "#skills-page",
                         start: "top 85%",
-                        toggleActions: isMobile
-                            ? "play none none none"
-                            : "play reverse play reverse",
-                    },
-                }
-            );
-
-            // Skill cards
-            gsap.fromTo(
-                ".skill-card",
-                { opacity: 0, y: 60 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    stagger: 0.1,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: "#skills-page",
-                        start: "top 85%",
-                        toggleActions: isMobile
-                            ? "play none none none"
-                            : "play reverse play reverse",
+                        toggleActions: "play none none none",
                     },
                 }
             );
         });
 
-        setTimeout(() => {
-            ScrollTrigger.refresh(); // Refresh positions after layout settles
-        }, 100);
+        // Animate skill cards ONCE when in view
+        const cards = document.querySelectorAll(".skill-card");
 
-        return () => ctx.revert();
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        gsap.to(el, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.8,
+                            ease: "power2.out",
+                            onComplete: () => observer.unobserve(el),
+                        });
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        cards.forEach((card) => {
+            gsap.set(card, { opacity: 0, y: 60 }); // NO scale change here!
+            observer.observe(card);
+        });
+
+        return () => {
+            ctx.revert();
+            observer.disconnect();
+        };
     }, []);
 
     return (
@@ -106,12 +109,16 @@ const Skills = () => {
             <section>
                 <div className="tech-icons-wrapper flex flex-row flex-wrap justify-center gap-6 sm:gap-10">
                     {skills.map((skill) => (
-                        <div className="skill-card w-20 h-20 sm:w-28 sm:h-28" key={skill.name}>
+                        <div
+                            key={skill.name}
+                            className="skill-card w-20 h-20 text-white flex flex-col justify-center items-center gap-2 m-3 font-semibold sm:w-28 sm:h-28"
+                        >
                             <img
                                 src={skill.src}
                                 alt={skill.name}
-                                className="tech-icon hover:scale-110 transition delay-75 w-full h-full object-contain"
+                                className="tech-icon w-full transition-transform duration-200 hover:scale-110 h-full object-contain"
                             />
+                            {skill.name}
                         </div>
                     ))}
                 </div>

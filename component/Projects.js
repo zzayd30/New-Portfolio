@@ -1,78 +1,59 @@
-"use client"
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import { Tilt } from "react-tilt";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import project2 from "../public/images/project2.jpg";
-import github from "../public/images/icons8-github-240.png"
-import { styles } from "../app/styles";
 import Image from "next/image";
+import github from "../public/assets/github.png";
+import project2 from "../public/images/project2.jpg";
+import { styles } from "../app/styles";
 import { SectionWrapper } from "../hoc";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectCard = ({
-    index,
-    name,
-    description,
-    tags,
-    image,
-    source_code_link,
-}) => {
+const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
     const cardRef = useRef(null);
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
         const el = cardRef.current;
+        const isMobile = window.innerWidth < 768;
 
-        // ScrollTrigger for animating project cards with stagger
         gsap.fromTo(
             el,
-            {
-                opacity: 0,
-                y: 100, // Start off-screen
-            },
+            { opacity: 0, y: 100 },
             {
                 opacity: 1,
                 y: 0,
+                duration: isMobile ? 0.8 : 1,
+                ease: "power2.out",
                 scrollTrigger: {
                     trigger: el,
-                    start: "top bottom",  // Trigger when the top of the element hits the bottom of the viewport
-                    end: "top center",    // End when the top reaches the center of the viewport
-                    scrub: true,          // Smoothly sync scroll and animation
-                    markers: false,       // Set to `true` to see debug markers
+                    start: "top bottom",
+                    end: isMobile ? undefined : "top center",
+                    toggleActions: isMobile ? "play none none none" : undefined,
+                    scrub: isMobile ? false : 1,
+                    markers: false,
                 },
             }
         );
     }, []);
 
     return (
-        <div ref={cardRef}>
+        <div ref={cardRef} className="project-card">
             <Tilt
-                options={{
-                    max: 45,
-                    scale: 1,
-                    speed: 450,
-                }}
+                options={{ max: 45, scale: 1, speed: 450 }}
                 className="bg-tertiary border border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full"
             >
                 <div className="relative w-full h-[230px]">
-                    <Image
-                        src={image}
-                        alt="project_image"
-                        fill
-                        className="object-cover object-left rounded-2xl"
-                    />
+                    <Image src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
                     <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
                         <div
                             onClick={() => window.open(source_code_link, "_blank")}
                             className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
                         >
-                            <Image
-                                src={github}
-                                alt="source code"
-                                className="w-1/2 h-1/2 object-contain"
-                            />
+                            <Image src={github} alt="source code" className="w-1/2 h-1/2 object-contain" />
                         </div>
                     </div>
                 </div>
@@ -84,10 +65,7 @@ const ProjectCard = ({
 
                 <div className="mt-4 flex text-white flex-wrap gap-2">
                     {tags.map((tag) => (
-                        <p
-                            key={`${name}-${tag.name}`}
-                            className={`text-[14px] ${tag.color}`}
-                        >
+                        <p key={`${name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
                             #{tag.name}
                         </p>
                     ))}
@@ -103,23 +81,10 @@ const projects = [
         description:
             "A full-stack e-commerce platform for clothing shopping built using the MERN stack. Includes features like product browsing, cart management, and secure checkout. Also features an admin panel for inventory and order control.",
         tags: [
-            {
-                name: "MongoDb",
-                color: "white",
-            },
-            {
-                name: "Express.js",
-                color: "white",
-            },
-            {
-                name: "React.js",
-                color: "white",
-            },
-
-            {
-                name: "Node.js",
-                color: "white",
-            },
+            { name: "MongoDb", color: "white" },
+            { name: "Express.js", color: "white" },
+            { name: "React.js", color: "white" },
+            { name: "Node.js", color: "white" },
         ],
         image: project2,
         source_code_link: "https://github.com/zzayd30/ClothEase-Front-End",
@@ -129,23 +94,10 @@ const projects = [
         description:
             "A MERN stack web app for managing software agency projects and team collaboration. Supports task assignment, progress tracking, and team updates in real time. Features a responsive UI to enhance project visibility and coordination.",
         tags: [
-            {
-                name: "MongoDb",
-                color: "white",
-            },
-            {
-                name: "Express.js",
-                color: "white",
-            },
-            {
-                name: "React.js",
-                color: "white",
-            },
-
-            {
-                name: "Node.js",
-                color: "white",
-            },
+            { name: "MongoDb", color: "white" },
+            { name: "Express.js", color: "white" },
+            { name: "React.js", color: "white" },
+            { name: "Node.js", color: "white" },
         ],
         image: project2,
         source_code_link: "https://github.com/zzayd30/CodeEase-Front-End",
@@ -155,22 +107,10 @@ const projects = [
         description:
             "A real-time chatting platform built with the MERN stack and WebSocket integration. Enables seamless instant messaging with a clean and responsive user interface. Designed for smooth, engaging conversations in a modern web environment.",
         tags: [
-            {
-                name: "MongoDb",
-                color: "white",
-            },
-            {
-                name: "Express.js",
-                color: "white",
-            },
-            {
-                name: "React.js",
-                color: "white",
-            },
-            {
-                name: "Sockets",
-                color: "white",
-            },
+            { name: "MongoDb", color: "white" },
+            { name: "Express.js", color: "white" },
+            { name: "React.js", color: "white" },
+            { name: "Sockets", color: "white" },
         ],
         image: project2,
         source_code_link: "https://github.com/zzayd30/ChatEase-Front-End",
@@ -179,6 +119,9 @@ const projects = [
 
 const Works = () => {
     useEffect(() => {
+        if (typeof window === "undefined") return;
+        const isMobile = window.innerWidth < 768;
+
         gsap.fromTo(
             ".works-container p",
             { opacity: 0, y: -20 },
@@ -190,7 +133,7 @@ const Works = () => {
                 scrollTrigger: {
                     trigger: ".works-container",
                     start: "top 90%",
-                    toggleActions: "play reverse play reverse",
+                    toggleActions: "play none none none",
                 },
             }
         );
@@ -207,27 +150,7 @@ const Works = () => {
                 scrollTrigger: {
                     trigger: ".works-container",
                     start: "top 90%",
-                    toggleActions: "play reverse play reverse",
-                },
-            }
-        );
-
-        gsap.fromTo(
-            ".project-card",
-            {
-                opacity: 0,
-                y: 100,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: ".works-container",
-                    start: "top bottom",
-                    end: "top center",
-                    scrub: true,
-                    markers: false,
+                    toggleActions: "play none none none",
                 },
             }
         );
@@ -241,9 +164,7 @@ const Works = () => {
             </div>
             <div className="works-container mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5">
                 {projects.map((project, index) => (
-                    <div key={`project-${index}`} className="project-card">
-                        <ProjectCard index={index} {...project} />
-                    </div>
+                    <ProjectCard key={`project-${index}`} index={index} {...project} />
                 ))}
             </div>
         </>

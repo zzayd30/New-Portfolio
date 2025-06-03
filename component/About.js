@@ -50,8 +50,7 @@ const About = () => {
                         <h2 className="text-black font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Overview.</h2>
                     </div>
                     <p ref={paragraphRef} className="mt-4 text-black text-[17px] max-w-2xl leading-[30px]">
-                        I'm a passionate software developer with hands-on experience in JavaScript and a strong command of modern frameworks like React, Node.js, and Firebase. I’ve built real-world projects ranging from video calling apps to e-commerce platforms and chat systems. I'm a fast learner who loves solving problems and building intuitive, scalable solutions. Whether it's a web app, a smart system, or a creative idea—let's bring it to life together!
-                    </p>
+                        I'm a passionate full-stack software developer with extensive hands-on experience in React, Node.js, Express.js, and MongoDb. Over the last year, I’ve built a diverse range of real-world applications—from seamless video calling platforms and interactive chat systems to dynamic e-commerce solutions. I take pride in writing clean, efficient code and crafting intuitive user experiences that scale. With a strong problem-solving mindset and a drive to keep learning, I thrive on turning ideas into impactful digital products. Whether it’s a web application, a smart system, or something completely new—let’s collaborate and bring it to life.</p>
                     <div ref={resumeBtnRef} className="mt-4">
                         <a href="/Muhammad-Zaid-CV.pdf" download>
                             <InteractiveHoverButton>Download Resume</InteractiveHoverButton>
