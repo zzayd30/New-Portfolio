@@ -54,7 +54,7 @@ const ProjectCard = ({
                     scale: 1,
                     speed: 450,
                 }}
-                className="bg-tertiary  border border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full"
+                className="bg-tertiary border border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full"
             >
                 <div className="relative w-full h-[230px]">
                     <Image
@@ -115,7 +115,7 @@ const projects = [
                 name: "React.js",
                 color: "white",
             },
-            
+
             {
                 name: "Node.js",
                 color: "white",
@@ -141,7 +141,7 @@ const projects = [
                 name: "React.js",
                 color: "white",
             },
-            
+
             {
                 name: "Node.js",
                 color: "white",
@@ -179,9 +179,41 @@ const projects = [
 
 const Works = () => {
     useEffect(() => {
-        // Stagger effect for project cards
         gsap.fromTo(
-            ".project-card", // Select all project cards
+            ".works-container p",
+            { opacity: 0, y: -20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ".works-container",
+                    start: "top 90%",
+                    toggleActions: "play reverse play reverse",
+                },
+            }
+        );
+
+        gsap.fromTo(
+            ".works-container h2",
+            { opacity: 0, y: -20 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: 0.2,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ".works-container",
+                    start: "top 90%",
+                    toggleActions: "play reverse play reverse",
+                },
+            }
+        );
+
+        gsap.fromTo(
+            ".project-card",
             {
                 opacity: 0,
                 y: 100,
@@ -189,13 +221,13 @@ const Works = () => {
             {
                 opacity: 1,
                 y: 0,
-                stagger: 0.1, // Stagger delay of 0.3 seconds between each card
+                stagger: 0.1,
                 scrollTrigger: {
                     trigger: ".works-container",
-                    start: "top bottom",  // Trigger when the top of the container reaches the bottom
+                    start: "top bottom",
                     end: "top center",
                     scrub: true,
-                    markers: false, // Set to true to see debug markers
+                    markers: false,
                 },
             }
         );
@@ -203,18 +235,11 @@ const Works = () => {
 
     return (
         <>
-            <div>
+            <div id="Projects" className="works-container">
                 <p className={`${styles.sectionSubText}`}>My work</p>
                 <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
             </div>
-
-            <div className="w-full flex">
-                <p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-                    Following projects showcase my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos. It reflects my ability to solve complex problems, work with different technologies, and manage projects effectively.
-                </p>
-            </div>
-
-            <div className="works-container mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5">
+            <div className="works-container mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5">
                 {projects.map((project, index) => (
                     <div key={`project-${index}`} className="project-card">
                         <ProjectCard index={index} {...project} />

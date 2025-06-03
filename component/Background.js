@@ -63,7 +63,7 @@ export function DotBackgroundDemo() {
         <Navbar />
       </motion.div>
 
-      <div className="relative flex h-screen w-full items-center justify-center bg-black dark:bg-white">
+      <div id="Home" className="relative overflow-hidden flex h-screen w-full items-center justify-center bg-black dark:bg-white">
         {/* Dotted Background */}
         <motion.div
           className={cn(

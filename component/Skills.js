@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
+import { styles } from "@/app/styles";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,7 +11,7 @@ const skills = [
     { name: "CSS", src: "/images/css-3.png" },
     { name: "JavaScript", src: "/images/js.png" },
     { name: "Tailwind CSS", src: "/images/tailwind.svg" },
-    { name: "Next.js", src: "/images/icons8-nextjs-96.png" },
+    { name: "Next.js", src: "/assets/icons8-nextjs-96.png" },
     { name: "MongoDB", src: "/images/icons8-mongo-db-96.png" },
     { name: "Express.js", src: "/images/express.svg" },
     { name: "React.js", src: "/images/icons8-react-480.png" },
@@ -26,64 +27,96 @@ const skills = [
 
 const Skills = () => {
     useEffect(() => {
-        gsap.fromTo(
-            "#skills-page",
-            { opacity: 0, y: 50 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1.2,
-                ease: "power2.out",
-            }
-        );
+        const isMobile = window.innerWidth <= 768; // Tailwind's md breakpoint
 
-        gsap.fromTo(
-            ".skill-card",
-            { opacity: 0, y: 60 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1.5,
-                stagger: 0.15,
-                scrollTrigger: {
-                    trigger: "#skills-page",
-                    start: "top 80%",
-                    toggleActions: "play none none reset",
-                    once: false,
-                },
-            }
-        );
+        const ctx = gsap.context(() => {
+            // Headings
+            gsap.fromTo(
+                ".skills-headings p",
+                { opacity: 0, y: -20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#skills-page",
+                        start: "top 95%",
+                        toggleActions: "play none none none",
+                    },
+                }
+            );
 
-        ScrollTrigger.refresh();
+            gsap.fromTo(
+                ".skills-headings h2",
+                { opacity: 0, y: -20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#skills-page",
+                        start: "top 85%",
+                        toggleActions: isMobile
+                            ? "play none none none"
+                            : "play reverse play reverse",
+                    },
+                }
+            );
+
+            // Skill cards
+            gsap.fromTo(
+                ".skill-card",
+                { opacity: 0, y: 60 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#skills-page",
+                        start: "top 85%",
+                        toggleActions: isMobile
+                            ? "play none none none"
+                            : "play reverse play reverse",
+                    },
+                }
+            );
+        });
+
+        setTimeout(() => {
+            ScrollTrigger.refresh(); // Refresh positions after layout settles
+        }, 100);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-        <div
-            id="skills-page"
-            className="min-h-screen flex items-center justify-center flex-col gap-y-8 py-16 text-white"
-        >
-            <h1 className="text-4xl font-bold text-center text-white">My Skills</h1>
-            <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 w-11/12 max-w-6xl">
-                {skills.map((skill) => (
-                    <div
-                        key={skill.name}
-                        className="skill-card bg-gray-950 border border-gray-400 rounded-lg p-2 flex items-center justify-center flex-col gap-y-2 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 shadow-lg hover:shadow-white"
-                    >
-                        <img
-                            alt={skill.name}
-                            src={skill.src}
-                            width={80}
-                            height={80}
-                            loading="lazy"
-                            className="object-contain hover:scale-110 hover:transition delay-75 aspect-square h-10 sm:h-12 md:h-16 lg:h-20"
-                        />
-                        <span className="text-xs text-gray-300 sm:text-sm md:text-base font-medium">
-                            {skill.name}
-                        </span>
-                    </div>
-                ))}
+        <>
+            <div id="skills-page" className="ml-4 sm:ml-16 mb-12">
+                <div className="skills-headings">
+                    <p className={`${styles.sectionSubText}`}>My Skills</p>
+                    <h2 className={`${styles.sectionHeadText}`}>Languages.</h2>
+                </div>
             </div>
-        </div>
+
+            <section>
+                <div className="tech-icons-wrapper flex flex-row flex-wrap justify-center gap-6 sm:gap-10">
+                    {skills.map((skill) => (
+                        <div className="skill-card w-20 h-20 sm:w-28 sm:h-28" key={skill.name}>
+                            <img
+                                src={skill.src}
+                                alt={skill.name}
+                                className="tech-icon hover:scale-110 transition delay-75 w-full h-full object-contain"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+        </>
     );
 };
 

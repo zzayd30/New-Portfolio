@@ -4,17 +4,37 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { styles } from "../app/styles";
-import { navLinks } from "../constants";
 import menu from "../public/assets/menu.svg";
 import close from "../public/assets/close.svg";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
-
+  const navLinks = [
+    {
+      id: "Home",
+      title: "Home",
+    },
+    {
+      id: "About",
+      title: "About",
+    },
+    {
+      id: "skills-page",
+      title: "Skills",
+    },
+    {
+      id: "Projects",
+      title: "Projects",
+    },
+    {
+      id: "Contact",
+      title: "Contact",
+    },
+  ];
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-transparent`}
+      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-transparent backdrop-blur-xs`}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" legacyBehavior>
