@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import gsap from "gsap";
 // Dynamically import ScrollTrigger to avoid SSR issues
 const ScrollTrigger =
@@ -46,7 +47,7 @@ const useGsap = (elementRef, animation, delay = 0) => {
                     delay,
                     scrollTrigger: {
                         trigger: elementRef.current,
-                        start: "top 85%",
+                        start: "top bottom",
                         toggleActions: "play none none reverse",
                     },
                 }
@@ -93,6 +94,7 @@ const About = () => {
     const headingRef = useRef(null);
     const paragraphRef = useRef(null);
     const profilePicRef = useRef(null);
+    const resumeBtnRef = useRef(null);
 
     // Heading Animation
     useGsap(headingRef, {
@@ -116,6 +118,12 @@ const About = () => {
         to: { opacity: 1, x: 0, scale: 1, duration: 1, ease: "power3.out" },
     });
 
+    useGsap(resumeBtnRef, {
+        from: { opacity: 0, y: 30, scale: 0.9 },
+        to: { opacity: 1, y: 0, scale: 1, duration: 1, ease: "power2.out" },
+    }, 0.5);
+
+
     return (
         <>
             <div className="flex flex-col lg:flex-row items-start gap-10">
@@ -130,12 +138,14 @@ const About = () => {
                         ref={paragraphRef}
                         className="mt-4 text-secondary text-[17px] max-w-xl leading-[30px]"
                     >
-                        I'm a skilled software developer with experience in JavaScript, and
-                        expertise in frameworks like React, Node.js, and Three.js. I'm a quick
-                        learner and collaborate closely with clients to create efficient,
-                        scalable, and user-friendly solutions that solve real-world problems.
-                        Let's work together to bring your ideas to life!
+                        I'm a passionate software developer with hands-on experience in JavaScript and a strong command of modern frameworks like React, Node.js, and Firebase. I’ve built real-world projects ranging from video calling apps to e-commerce platforms and chat systems. I'm a fast learner who loves solving problems and building intuitive, scalable solutions. Whether it's a web app, a smart system, or a creative idea—let's bring it to life together!
                     </p>
+                    <div ref={resumeBtnRef} className="mt-4">
+                        <a href="/Muhammad-Zaid-CV.pdf" download>
+                            <InteractiveHoverButton>Download Resume</InteractiveHoverButton>
+                        </a>
+                    </div>
+
                 </div>
 
                 {/* Right Content: Image Container */}
@@ -152,11 +162,11 @@ const About = () => {
             </div>
 
             {/* Service Cards */}
-            <div className="mt-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 justify-items-center gap-10">
+            {/* <div className="mt-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 justify-items-center gap-10">
                 {services.map((service, index) => (
                     <ServiceCard key={service.title} index={index} {...service} />
                 ))}
-            </div>
+            </div> */}
         </>
     );
 };

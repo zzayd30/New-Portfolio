@@ -1,7 +1,7 @@
 "use client";
 
+import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
-import React, { useEffect, useRef } from "react";
 import { styles } from "@/app/styles";
 import Navbar from "./Navbar";
 import Typed from "typed.js";
@@ -11,7 +11,12 @@ import { motion } from "framer-motion";
 export function DotBackgroundDemo() {
   const typedRef = useRef(null);
 
+  // State to show or hide navbar based on scroll
+  const [showNavbar, setShowNavbar] = useState(true);
+  const lastScrollTop = useRef(0);
+
   useEffect(() => {
+    // Typed.js initialization
     const typed = new Typed(typedRef.current, {
       strings: ["\xa0a Computer Scientist.", "\xa0a MERN Stack Developer."],
       typeSpeed: 150,
@@ -26,16 +31,34 @@ export function DotBackgroundDemo() {
     };
   }, []);
 
+  useEffect(() => {
+    // Scroll handler to toggle navbar visibility
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop.current && scrollTop > 100) {
+        // Scrolling down
+        setShowNavbar(false);
+      } else if (scrollTop < lastScrollTop.current) {
+        // Scrolling up
+        setShowNavbar(true);
+      }
+      lastScrollTop.current = scrollTop <= 0 ? 0 : scrollTop;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
+      {/* Motion div wrapping navbar, controlling show/hide */}
       <motion.div
-        // initial={{ opacity: 0, y: -20 }}
-        // animate={{ opacity: 1, y: 0 }}
-        // transition={{ duration: 1 }}
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.2 }} // re-animate each time it scrolls into view
-        transition={{ duration: 0.8 }}
+        animate={{ opacity: 1, y: showNavbar ? 0 : -100 }}
+        transition={{ duration: 0.3 }}
+        style={{ position: "fixed", width: "100%", top: 0, zIndex: 20 }}
       >
         <Navbar />
       </motion.div>
@@ -81,10 +104,7 @@ export function DotBackgroundDemo() {
                   Hi, I'm <span className="text-gray-400">Zaid</span>
                 </h1>
                 <span className="text-2xl md:text-3xl text-white">I am&nbsp;</span>
-                <span
-                  ref={typedRef}
-                  className="text-2xl md:text-3xl text-gray-400"
-                ></span>
+                <span ref={typedRef} className="text-2xl md:text-3xl text-gray-400"></span>
                 <p className={`${styles.heroSubText} mt-4 text-white`}>
                   Transform Your Online Presence
                   <br />
