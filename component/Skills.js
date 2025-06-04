@@ -101,8 +101,8 @@ const Skills = () => {
         <>
             <div id="skills-page" className="ml-4 sm:ml-16 mb-12">
                 <div className="skills-headings">
-                    <p className={`${styles.sectionSubText}`}>My Skills</p>
-                    <h2 className={`${styles.sectionHeadText}`}>Languages.</h2>
+                    <p className={`${styles.sectionSubText}`}>Languages and Tools</p>
+                    <h2 className={`${styles.sectionHeadText}`}>My Skills</h2>
                 </div>
             </div>
 

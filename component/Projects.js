@@ -42,7 +42,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 
     return (
         <div ref={cardRef} className="project-card">
-            <div className="bg-tertiary border hover:scale-110 cursor-pointer transition-transform delay-150 border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full">
+            <div className="bg-tertiary border hover:scale-110 cursor-pointer transition-transform delay-150 duration-150 border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full">
                 <div className="relative w-full h-[130px] md:h-[150px]">
                     <Image src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
                     <div className="absolute inset-0 flex justify-end m-3 card-img_hover">

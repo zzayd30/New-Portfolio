@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link href="/" legacyBehavior>
           <a
-            className="flex text-white transition delay-75 hover:bg-white hover:text-black hover:scale-110 rounded-md px-2 py-1 items-center gap-2"
+            className="flex text-white hover:animate-pulse rounded-md px-2 py-1 items-center gap-2"
             onClick={() => {
               setActive("");
               window.scrollTo(0, 0);
