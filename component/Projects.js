@@ -5,12 +5,18 @@ import { Tilt } from "react-tilt";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import github from "../public/assets/github.png";
-import project2 from "../public/images/project2.jpg";
+import github from "../public/images/icons8-github-240.png";
+import ClothEase from "../public/images/ClothEase.jpg";
+import CodeEase from "../public/images/CodeEase.jpg";
+import ChatEase from "../public/images/ChatEase.jpg";
 import { styles } from "../app/styles";
 import { SectionWrapper } from "../hoc";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const handleImgClick = (e) => {
+
+}
 
 const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
     const cardRef = useRef(null);
@@ -42,12 +48,9 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 
     return (
         <div ref={cardRef} className="project-card">
-            <Tilt
-                options={{ max: 45, scale: 1, speed: 450 }}
-                className="bg-tertiary border border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full"
-            >
-                <div className="relative w-full h-[230px]">
-                    <Image src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
+            <div className="bg-tertiary border hover:scale-110 cursor-pointer transition-transform delay-75 border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full">
+                <div className="relative w-full h-[150px]">
+                    <Image onClick={handleImgClick} src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
                     <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
                         <div
                             onClick={() => window.open(source_code_link, "_blank")}
@@ -63,14 +66,17 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
                     <p className="mt-2 text-secondary text-[14px]">{description}</p>
                 </div>
 
-                <div className="mt-4 flex text-white flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2">
                     {tags.map((tag) => (
-                        <p key={`${name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
+                        <p
+                            key={`${name}-${tag.name}`}
+                            className="text-[14px] bg-gradient-to-r from-pink-500 via-yellow-400 to-cyan-400 bg-clip-text text-transparent hover:animate-pulse"
+                        >
                             #{tag.name}
                         </p>
                     ))}
                 </div>
-            </Tilt>
+            </div>
         </div>
     );
 };
@@ -86,7 +92,7 @@ const projects = [
             { name: "React.js", color: "white" },
             { name: "Node.js", color: "white" },
         ],
-        image: project2,
+        image: ClothEase,
         source_code_link: "https://github.com/zzayd30/ClothEase-Front-End",
     },
     {
@@ -99,7 +105,7 @@ const projects = [
             { name: "React.js", color: "white" },
             { name: "Node.js", color: "white" },
         ],
-        image: project2,
+        image: CodeEase,
         source_code_link: "https://github.com/zzayd30/CodeEase-Front-End",
     },
     {
@@ -112,7 +118,7 @@ const projects = [
             { name: "React.js", color: "white" },
             { name: "Sockets", color: "white" },
         ],
-        image: project2,
+        image: ChatEase,
         source_code_link: "https://github.com/zzayd30/ChatEase-Front-End",
     },
 ];
