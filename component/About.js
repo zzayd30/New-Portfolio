@@ -64,7 +64,7 @@ const About = () => {
                         <div className="absolute inset-0 border-4 border-gray-400 rounded-xl group-hover:border-gray-200 transition-all duration-500 z-10" />
                         <div className="absolute inset-1 rounded-xl ring-4 ring-black z-0" />
                         <img
-                            src="/assets/Profile-Pic.jpg"
+                            src="/assets/green.jpg"
                             alt="Profile Picture"
                             className="w-full h-full object-cover border-4 border-black rounded-xl relative z-20 group-hover:scale-[1.05] transition-transform duration-500 ease-in-out"
                         />
