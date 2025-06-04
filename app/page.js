@@ -1,7 +1,6 @@
 import React from 'react';
 import { DotBackgroundDemo } from '@/component/Background';
 import About from '@/component/About';
-import { BackgroundBeams } from '@/component/Background-Beam';
 import Skills from '@/component/Skills';
 import Projects from '@/component/Projects';
 import Contact from '@/component/Contact';
@@ -12,7 +11,6 @@ import Footer from '@/component/footer';
 export default function Page() {
   return (
     <>
-      {/* <BackgroundBeams /> */}
       <DotBackgroundDemo />
       <About />
       <Skills />

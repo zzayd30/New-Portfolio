@@ -42,8 +42,8 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
 
     return (
         <div ref={cardRef} className="project-card">
-            <div className="bg-tertiary border hover:scale-110 cursor-pointer transition-transform delay-75 border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full">
-                <div className="relative w-full h-[150px]">
+            <div className="bg-tertiary border hover:scale-110 cursor-pointer transition-transform delay-150 border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full">
+                <div className="relative w-full h-[130px] md:h-[150px]">
                     <Image src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
                     <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
                         <div
@@ -120,7 +120,6 @@ const projects = [
 const Works = () => {
     useEffect(() => {
         if (typeof window === "undefined") return;
-        const isMobile = window.innerWidth < 768;
 
         gsap.fromTo(
             ".works-container p",
@@ -162,7 +161,7 @@ const Works = () => {
                 <p className={`${styles.sectionSubText}`}>My work</p>
                 <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
             </div>
-            <div className="works-container mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5">
+            <div className="works-container mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-7">
                 {projects.map((project, index) => (
                     <ProjectCard key={`project-${index}`} index={index} {...project} />
                 ))}
