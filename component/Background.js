@@ -85,10 +85,10 @@ export function DotBackgroundDemo() {
           transition={{ duration: 1.5 }}
         />
 
-        <section className="relative w-full h-screen flex flex-col md:flex-row px-4 md:px-12">
+        <section className="relative w-full h-screen flex flex-col md:flex-row px-4 md:px-24">
           {/* Left side content */}
           <motion.div
-            className="flex flex-col justify-center items-start w-full md:w-1/2 pt-12"
+            className="flex flex-col justify-center items-start w-full md:w-1/2 pt-24"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -114,7 +114,7 @@ export function DotBackgroundDemo() {
 
           {/* Right side content */}
           <motion.div
-            className="flex justify-center items-center w-full md:w-1/2 md:pt-12"
+            className="flex justify-center items-center w-full md:w-1/2 md:pt-24"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
