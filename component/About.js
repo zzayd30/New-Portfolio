@@ -42,14 +42,14 @@ const About = () => {
 
     return (
         <div id="About" className="w-full overflow-x-hidden">
-            <div className="bg-gray-400 rounded-lg flex flex-col lg:flex-row items-start gap-10 lg:gap-20 p-6 md:p-10">
+            <div className="border-gray-400 border rounded-lg flex flex-col lg:flex-row items-start gap-10 lg:gap-20 p-6 md:p-10">
                 {/* Left Column */}
                 <div className="flex-1">
                     <div ref={headingRef}>
-                        <p className="sm:text-[18px] text-[14px] text-black uppercase tracking-wider">Introduction</p>
-                        <h2 className="text-black font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Overview.</h2>
+                        <p className="sm:text-[18px] text-[14px] text-white uppercase tracking-wider">Introduction</p>
+                        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Overview.</h2>
                     </div>
-                    <p ref={paragraphRef} className="mt-4 text-black text-[17px] max-w-2xl leading-[30px]">
+                    <p ref={paragraphRef} className="mt-4 text-white text-[17px] max-w-2xl leading-[30px]">
                         I'm a passionate full-stack software developer with extensive hands-on experience in React, Node.js, Express.js, and MongoDb. Over the last year, I’ve built a diverse range of real-world applications—from seamless video calling platforms and interactive chat systems to dynamic e-commerce solutions. I take pride in writing clean, efficient code and crafting intuitive user experiences that scale. With a strong problem-solving mindset and a drive to keep learning, I thrive on turning ideas into impactful digital products. Whether it’s a web application, a smart system, or something completely new—let’s collaborate and bring it to life.</p>
                     <div ref={resumeBtnRef} className="mt-4">
                         <a href="/Muhammad-Zaid-CV.pdf" download>
@@ -61,12 +61,12 @@ const About = () => {
                 {/* Right Column - Profile Image */}
                 <div ref={profilePicRef} className="w-full max-w-md h-[400px] md:h-[500px] mx-auto lg:mx-0">
                     <div className="relative w-full h-full rounded-xl overflow-hidden shadow-lg group transition-all duration-500">
-                        <div className="absolute inset-0 border-4 border-gray-400 rounded-xl group-hover:border-gray-200 transition-all duration-500 z-10" />
+                        <div className="absolute inset-0 rounded-xl group-hover:border-gray-200 transition-all duration-500 z-10" />
                         <div className="absolute inset-1 rounded-xl ring-4 ring-black z-0" />
                         <img
                             src="/assets/green.jpg"
                             alt="Profile Picture"
-                            className="w-full h-full object-cover border-4 border-black rounded-xl relative z-20 group-hover:scale-[1.05] transition-transform duration-500 ease-in-out"
+                            className="w-full h-full object-cover border-3 border-gray-400 rounded-xl relative z-20 group-hover:scale-[1.05] transition-transform duration-500 ease-in-out"
                         />
                     </div>
                 </div>
