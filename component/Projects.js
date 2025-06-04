@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import { Tilt } from "react-tilt";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -14,13 +13,8 @@ import { SectionWrapper } from "../hoc";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const handleImgClick = (e) => {
-
-}
-
 const ProjectCard = ({ index, name, description, tags, image, source_code_link }) => {
     const cardRef = useRef(null);
-
     useEffect(() => {
         if (typeof window === "undefined") return;
         const el = cardRef.current;
@@ -50,7 +44,7 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
         <div ref={cardRef} className="project-card">
             <div className="bg-tertiary border hover:scale-110 cursor-pointer transition-transform delay-75 border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full">
                 <div className="relative w-full h-[150px]">
-                    <Image onClick={handleImgClick} src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
+                    <Image src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
                     <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
                         <div
                             onClick={() => window.open(source_code_link, "_blank")}
@@ -70,9 +64,9 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
                     {tags.map((tag) => (
                         <p
                             key={`${name}-${tag.name}`}
-                            className="text-[14px] bg-gradient-to-r from-pink-500 via-yellow-400 to-cyan-400 bg-clip-text text-transparent hover:animate-pulse"
+                            className="text-[14px] font-semibold bg-white px-2 py-1 rounded-xl hover:animate-pulse"
                         >
-                            #{tag.name}
+                            {tag.name}
                         </p>
                     ))}
                 </div>
