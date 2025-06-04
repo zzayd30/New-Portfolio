@@ -66,7 +66,7 @@ const About = () => {
                         <img
                             src="/assets/green.jpg"
                             alt="Profile Picture"
-                            className="w-full h-full object-cover border-3 border-gray-400 rounded-xl relative z-20 group-hover:scale-[1.05] transition-transform duration-500 ease-in-out"
+                            className="w-full h-full object-cover border-3 ring-3 ring-red-500 border-gray-400 rounded-xl relative z-20 group-hover:scale-[1.05] transition-transform duration-500 ease-in-out"
                         />
                     </div>
                 </div>

@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 
 export function DotBackgroundDemo() {
   const typedRef = useRef(null);
-
   // State to show or hide navbar based on scroll
   const [showNavbar, setShowNavbar] = useState(true);
   const lastScrollTop = useRef(0);
