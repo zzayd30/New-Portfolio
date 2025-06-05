@@ -10,12 +10,10 @@ import { motion } from "framer-motion";
 
 export function DotBackgroundDemo() {
   const typedRef = useRef(null);
-  // State to show or hide navbar based on scroll
   const [showNavbar, setShowNavbar] = useState(true);
   const lastScrollTop = useRef(0);
 
   useEffect(() => {
-    // Typed.js initialization
     const typed = new Typed(typedRef.current, {
       strings: ["\xa0a Computer Scientist.", "\xa0a MERN Stack Developer."],
       typeSpeed: 150,
@@ -31,15 +29,12 @@ export function DotBackgroundDemo() {
   }, []);
 
   useEffect(() => {
-    // Scroll handler to toggle navbar visibility
     const handleScroll = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       if (scrollTop > lastScrollTop.current && scrollTop > 100) {
-        // Scrolling down
         setShowNavbar(false);
       } else if (scrollTop < lastScrollTop.current) {
-        // Scrolling up
         setShowNavbar(true);
       }
       lastScrollTop.current = scrollTop <= 0 ? 0 : scrollTop;
@@ -52,7 +47,6 @@ export function DotBackgroundDemo() {
 
   return (
     <>
-      {/* Motion div wrapping navbar, controlling show/hide */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: showNavbar ? 0 : -100 }}
@@ -113,7 +107,7 @@ export function DotBackgroundDemo() {
 
           {/* Right side content */}
           <motion.div
-            className="flex justify-center items-center w-full md:w-1/2 md:pt-24"
+            className="flex justify-center items-center w-3/4 md:w-1/2 md:pt-24"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
