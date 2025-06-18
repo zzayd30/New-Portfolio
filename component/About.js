@@ -49,7 +49,7 @@ const About = () => {
                         <p className="sm:text-[18px] text-[14px] text-white uppercase tracking-wider">Introduction</p>
                         <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">Overview.</h2>
                     </div>
-                    <p ref={paragraphRef} className="mt-4 text-white text-[17px] max-w-2xl leading-[30px]">
+                    <p ref={paragraphRef} className="mt-4 text-white text-justify text-[17px] max-w-2xl leading-[30px]">
                         I'm a passionate full-stack software developer with extensive hands-on experience in React, Node.js, Express.js, and MongoDb. Over the last year, I’ve built a diverse range of real-world applications—from seamless video calling platforms and interactive chat systems to dynamic e-commerce solutions. I take pride in writing clean, efficient code and crafting intuitive user experiences that scale. With a strong problem-solving mindset and a drive to keep learning, I thrive on turning ideas into impactful digital products. Whether it’s a web application, a smart system, or something completely new—let’s collaborate and bring it to life.</p>
                     <div ref={resumeBtnRef} className="mt-4">
                         <a href="/Muhammad-Zaid-CV.pdf" download>

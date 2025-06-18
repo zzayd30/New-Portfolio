@@ -5,6 +5,12 @@ import Link from "next/link";
 import { styles } from "../app/styles";
 import menu from "../public/assets/menu.svg";
 import close from "../public/assets/close.svg";
+import { AiFillHome } from 'react-icons/ai';
+import { FaUserAlt } from 'react-icons/fa';
+import { GiSkills } from 'react-icons/gi';
+import { BsFolder2Open } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import Image from "next/image";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -12,11 +18,11 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
-    { id: "Home", title: "Home" },
-    { id: "About", title: "About" },
-    { id: "skills-page", title: "Skills" },
-    { id: "Projects", title: "Projects" },
-    { id: "Contact", title: "Contact" },
+    { id: "Home", title: "Home", icon: <AiFillHome /> },
+    { id: "About", title: "About", icon: <FaUserAlt /> },
+    { id: "skills-page", title: "Skills", icon: <GiSkills /> },
+    { id: "Projects", title: "Projects", icon: <BsFolder2Open /> },
+    { id: "Contact", title: "Contact", icon: <MdEmail /> },
   ];
 
   useEffect(() => {
@@ -32,9 +38,9 @@ const Navbar = () => {
     <nav
       className={`
         ${styles.paddingX}
-        w-full flex items-center py-5 fixed top-0 z-20
-        transition-all duration-300
-        ${scrolled ? "bg-transparent bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent"}
+      w-full flex items-center py-5 fixed top-0 z-20
+      transition-all duration-300
+      ${scrolled ? "bg-transparent bg-opacity-90 backdrop-blur-md shadow-md" : "bg-transparent"}
       `}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
@@ -57,7 +63,7 @@ const Navbar = () => {
           {navLinks.map((nav) => (
             <li key={nav.id} onClick={() => setActive(nav.title)}>
               <a
-                href={`#${nav.id}`}
+                href={`${nav.id}`}
                 className="text-secondary text-[18px] font-medium px-2 py-1 rounded-md transition-transform duration-150 ease-in-out hover:scale-110 active:scale-90 hover:bg-white hover:text-black"
               >
                 {nav.title}
@@ -78,25 +84,33 @@ const Navbar = () => {
           {/* Mobile Dropdown */}
           <div
             className={`${toggle ? "flex" : "hidden"
-              } p-6 black-gradient absolute top-20 right-4 min-w-[160px] z-10 rounded-xl flex-col gap-4`}
+              } p-6 bg-black border border-gray-500 absolute top-20 right-4 min-w-[200px] z-20 rounded-xl flex-col shadow-2xl transition-all duration-300`}
           >
-            {navLinks.map((nav) => (
-              <a
-                key={nav.id}
-                href={`#${nav.id}`}
-                className="text-secondary text-[18px] font-medium px-2 py-1 rounded-md hover:bg-white hover:text-black transition"
-                onClick={() => {
-                  setActive(nav.title);
-                  setToggle(false);
-                }}
-              >
-                {nav.title}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </nav>
+            {
+              navLinks.map((nav, index) => (
+                <React.Fragment key={nav.id}>
+                  <a
+                    href={`#${nav.id}`}
+                    className="flex items-center gap-3 text-gray-200 text-[16px] font-medium px-3 py-2 rounded-md hover:bg-gray-500 hover:text-white transition-all duration-200 ease-in-out"
+                    onClick={() => {
+                      setActive(nav.title);
+                      setToggle(false);
+                    }}
+                  >
+                    <span className="text-[18px]">{nav.icon}</span>
+                    {nav.title}
+                  </a>
+                  {index !== navLinks.length && (
+                    <hr className="border-gray-500 opacity-30 mx-2" />
+                  )}
+                </React.Fragment>
+              ))
+            }
+      </div >
+
+      </div >
+    </div >
+    </nav >
   );
 };
 

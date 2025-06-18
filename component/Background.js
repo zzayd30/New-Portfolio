@@ -56,7 +56,7 @@ export function DotBackgroundDemo() {
         <Navbar />
       </motion.div>
 
-      <div id="Home" className="relative overflow-hidden flex h-screen w-full items-center justify-center bg-black dark:bg-white">
+      <div id="Home" className="relative overflow-hidden flex h-[150vh] md:h-screen w-full items-center justify-center bg-black dark:bg-white">
         {/* Dotted Background */}
         <motion.div
           className={cn(
@@ -78,10 +78,10 @@ export function DotBackgroundDemo() {
           transition={{ duration: 1.5 }}
         />
 
-        <section className="relative w-full h-screen flex flex-col md:flex-row px-4 md:px-24">
+        <section className="relative w-full min-h-screen flex flex-col md:flex-row px-4 sm:px-6 md:px-12 lg:px-24 mt-36 md:mt-0">
           {/* Left side content */}
           <motion.div
-            className="flex flex-col justify-center items-start w-full md:w-1/2 pt-24"
+            className="flex flex-col justify-center items-start w-full md:w-1/2 pt-20 md:pt-16"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -89,16 +89,18 @@ export function DotBackgroundDemo() {
           >
             <div className="flex flex-row items-start gap-5">
               <div className="flex flex-col justify-center items-center">
-                <div className="w-5 h-5 rounded-full bg-white" />
-                <div className="w-1 sm:h-80 h-40 bg-gradient-to-b from-white to-black" />
+                <div className="w-4 h-4 rounded-full bg-white" />
+                <div className="w-1 sm:h-60 h-40 bg-gradient-to-b from-white to-black" />
               </div>
               <div>
-                <h1 className={`${styles.heroHeadText} text-white`}>
+                <h1 className={`${styles.heroHeadText} text-white text-4xl sm:text-5xl md:text-5xl lg:text-6xl`}>
                   Hi, I'm <span className="text-gray-400">Zaid</span>
                 </h1>
-                <span className="text-2xl md:text-3xl text-white">I am&nbsp;</span>
-                <span ref={typedRef} className="text-2xl md:text-3xl text-gray-400"></span>
-                <p className={`${styles.heroSubText} w-3/4 mt-4 text-white`}>
+                <div className="flex flex-wrap text-2xl sm:text-2xl md:text-3xl text-white">
+                  I am&nbsp;
+                  <span ref={typedRef} className="text-gray-400" />
+                </div>
+                <p className={`${styles.heroSubText} w-[90%] sm:w-4/5 mt-4 text-white text-sm sm:text-base`}>
                   Transform Your Online Presence with Custom Web Solutions and More
                 </p>
               </div>
@@ -107,7 +109,7 @@ export function DotBackgroundDemo() {
 
           {/* Right side content */}
           <motion.div
-            className="flex justify-center items-center w-full md:w-1/2 md:pt-24"
+            className="flex justify-center items-center w-full md:w-1/2 md:pt-20"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.2 }}
@@ -116,6 +118,7 @@ export function DotBackgroundDemo() {
             <OrbitingCirclesDemo />
           </motion.div>
         </section>
+
       </div>
     </>
   );

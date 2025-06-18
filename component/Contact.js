@@ -71,9 +71,7 @@ const Contact = () => {
 
     return (
         <div id="Contact" className='relative z-0'>
-            {/* ✅ Add stars in background */}
             <StarsCanvas />
-
             <div className='flex xl:flex-row flex-col-reverse gap-10 overflow-hidden relative z-10'>
                 <motion.div
                     variants={slideIn("left", "tween", 0.2, 1)}
@@ -143,7 +141,7 @@ const Contact = () => {
 
                 <motion.div
                     variants={slideIn("right", "tween", 0.2, 1)}
-                    className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
+                    className='xl:flex-1 xl:h-auto md:h-[500px] h-[350px]'
                 >
                     <EarthCanvas />
                 </motion.div>

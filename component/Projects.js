@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -41,10 +41,15 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
     }, []);
 
     return (
-        <div ref={cardRef} className="project-card">
-            <div className="bg-tertiary border hover:scale-110 cursor-pointer transition-transform delay-150 duration-150 border-gray-400 p-5 rounded-2xl sm:w-[360px] w-full">
-                <div className="relative w-full h-[130px] md:h-[150px]">
-                    <Image src={image} alt="project_image" fill className="object-cover object-left rounded-2xl" />
+        <div ref={cardRef} className="project-card w-full max-w-sm">
+            <div className="bg-tertiary border hover:scale-[1.02] cursor-pointer transition-transform duration-200 border-gray-400 p-5 rounded-2xl w-full">
+                <div className="relative w-full aspect-[3/2] md:aspect-[16/9]">
+                    <Image
+                        src={image}
+                        alt="project_image"
+                        fill
+                        className="object-cover object-left rounded-2xl"
+                    />
                     <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
                         <div
                             onClick={() => window.open(source_code_link, "_blank")}
@@ -56,15 +61,15 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
                 </div>
 
                 <div className="mt-5">
-                    <h3 className="text-white font-bold text-[24px]">{name}</h3>
-                    <p className="mt-2 text-secondary text-[14px]">{description}</p>
+                    <h3 className="text-white font-bold text-[20px] sm:text-[22px] md:text-[24px]">{name}</h3>
+                    <p className="mt-2 text-secondary text-justify text-[14px] sm:text-[15px]">{description}</p>
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                         <p
                             key={`${name}-${tag.name}`}
-                            className="text-[14px] font-semibold bg-white px-2 py-1 rounded-xl hover:animate-pulse"
+                            className="text-[13px] sm:text-[14px] font-semibold bg-white px-2 py-1 rounded-xl hover:animate-pulse"
                         >
                             {tag.name}
                         </p>
