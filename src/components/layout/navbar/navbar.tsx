@@ -61,7 +61,7 @@ export function Navbar() {
         backgroundColor: isFloating ? "var(--primary)" : "transparent",
       }}
       className={cn(
-        "fixed z-navbar border transition-[background-color,border-color,border-radius,box-shadow,left,right,top] duration-motion-slow ease-editorial",
+        "navbar-shell fixed z-navbar border transition-[background-color,border-color,border-radius,box-shadow,left,right,top] duration-motion-slow ease-editorial",
         isFloating
           ? "left-mobile right-mobile top-mobile rounded-theme-pill border-primary bg-primary px-layout py-component-gap text-primary-foreground shadow-floating"
           : "inset-x-0 top-0 w-full rounded-none border-transparent bg-transparent shadow-none",

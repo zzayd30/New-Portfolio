@@ -8,7 +8,7 @@ import { portfolioSections } from "@/data/navigation";
 import { useActiveSection } from "@/hooks/use-active-section";
 
 interface PageShellProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export function PageShell({ children }: PageShellProps) {
