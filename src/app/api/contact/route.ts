@@ -7,9 +7,10 @@ export const runtime = "nodejs";
 function getSmtpConfiguration() {
   const host = process.env.SMTP_HOST;
   const port = Number(process.env.SMTP_PORT);
-  const user = process.env.SMTP_USER;
-  const password = process.env.SMTP_PASSWORD;
-  const recipient = process.env.CONTACT_EMAIL;
+  const user = process.env.SMTP_USER?.trim();
+  // Gmail displays app passwords in groups; spaces are formatting, not part of the credential.
+  const password = process.env.SMTP_PASSWORD?.replace(/\s/g, "");
+  const recipient = process.env.CONTACT_EMAIL?.trim();
 
   if (!host || !Number.isInteger(port) || !user || !password || !recipient) {
     return null;
@@ -75,7 +76,8 @@ export async function POST(request: Request) {
       subject: `Portfolio message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     });
-  } catch {
+  } catch (error) {
+    console.error("Contact email delivery failed:", error instanceof Error ? error.message : error);
     return Response.json(
       { message: "Unable to send your message right now. Please email me directly." },
       { status: 502 },

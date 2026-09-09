@@ -28,7 +28,15 @@ export function HeroIntro({ content }: HeroIntroProps) {
       viewport={viewport}
       className="hero-context lg:col-span-4 lg:col-start-9"
     >
-      <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+      <div className="hero-context-index">
+        <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+          01 / 06
+        </p>
+        <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+          Home
+        </p>
+      </div>
+      <p className="mt-layout font-mono text-label uppercase tracking-label text-muted-foreground">
         Professional context
       </p>
       <p className="mt-layout max-w-prose text-body text-foreground">{content.description}</p>

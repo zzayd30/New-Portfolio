@@ -275,8 +275,19 @@ body {
 }
 
 .hero-context {
+  border: var(--border-width) solid var(--border);
+  background: var(--surface);
   border-inline-start: var(--border-width) solid var(--border);
-  padding-inline-start: var(--space-layout);
+  padding: var(--space-layout);
+}
+
+.hero-context-index {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-component-gap);
+  border-block-end: var(--border-width) solid var(--border);
+  padding-block-end: var(--space-component-gap);
 }
 
 .about-context {
@@ -690,8 +701,7 @@ body {
   .hero-context {
     border-block-start: var(--border-width) solid var(--border);
     border-inline-start: 0;
-    padding-block-start: var(--space-layout);
-    padding-inline-start: 0;
+    padding: var(--space-card);
   }
 
   .about-context {
