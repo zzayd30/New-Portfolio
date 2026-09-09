@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { useRef } from "react";
 
 import { Container } from "@/components/layout/container";
 import { contactContent } from "@/data/contact";
@@ -12,6 +13,12 @@ import { ContactGraphic } from "./contact-graphic";
 
 export function ContactSection() {
   const shouldReduceMotion = useReducedMotion();
+  const contactRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: contactRef,
+    offset: ["start 65%", "end 65%"],
+  });
+  const scaleY = useSpring(scrollYProgress, motionTokens.spring.gentle);
 
   return (
     <section
@@ -50,21 +57,29 @@ export function ContactSection() {
               </div>
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: motionTokens.distance.normal }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.25 }}
-            transition={{
-              duration: shouldReduceMotion ? 0 : motionTokens.duration.slow,
-              ease: motionTokens.easing.editorial,
-            }}
-            className="contact-content lg:col-span-8 lg:col-start-5"
-          >
-            <ContactDetails content={contactContent} />
-            <div className="mt-section-gap border-t border-border pt-section-gap">
-              <ContactForm />
-            </div>
-          </motion.div>
+          <div ref={contactRef} className="contact-timeline lg:col-span-8 lg:col-start-5">
+            <div aria-hidden="true" className="contact-timeline-track" />
+            <motion.div
+              aria-hidden="true"
+              style={{ scaleY: shouldReduceMotion ? 1 : scaleY }}
+              className="contact-timeline-progress"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: motionTokens.distance.normal }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.25 }}
+              transition={{
+                duration: shouldReduceMotion ? 0 : motionTokens.duration.slow,
+                ease: motionTokens.easing.editorial,
+              }}
+              className="contact-content"
+            >
+              <ContactDetails content={contactContent} />
+              <div className="mt-section-gap border-t border-border pt-section-gap">
+                <ContactForm />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </Container>
     </section>

@@ -53,11 +53,20 @@ export function ContactForm() {
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit(onSubmit)} className="relative">
-      <div className="grid gap-component-gap sm:grid-cols-2">
-        <div>
-          <label htmlFor="contact-name" className="font-mono text-label uppercase tracking-label text-muted-foreground">
-            Name
+    <form noValidate onSubmit={handleSubmit(onSubmit)} className="contact-form relative">
+      <div className="contact-form-header">
+        <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+          Message form
+        </p>
+        <p className="mt-control-y text-body text-muted-foreground">
+          Tell me what you&apos;re building, improving, or exploring.
+        </p>
+      </div>
+      <div className="mt-layout grid gap-layout sm:grid-cols-2">
+        <div className="contact-field">
+          <label htmlFor="contact-name" className="contact-field-label">
+            <span>Name</span>
+            <span aria-hidden="true">01</span>
           </label>
           <Input
             id="contact-name"
@@ -65,18 +74,19 @@ export function ContactForm() {
             placeholder="Your name"
             aria-invalid={Boolean(errors.name)}
             aria-describedby={errors.name ? "contact-name-error" : undefined}
-            className="mt-control-y"
+            className="contact-input mt-control-y"
             {...register("name")}
           />
           {errors.name && (
-            <p id="contact-name-error" className="mt-control-y text-small text-foreground">
+            <p id="contact-name-error" className="contact-field-error mt-control-y text-small text-foreground">
               {errors.name.message}
             </p>
           )}
         </div>
-        <div>
-          <label htmlFor="contact-email" className="font-mono text-label uppercase tracking-label text-muted-foreground">
-            Email
+        <div className="contact-field">
+          <label htmlFor="contact-email" className="contact-field-label">
+            <span>Email</span>
+            <span aria-hidden="true">02</span>
           </label>
           <Input
             id="contact-email"
@@ -85,19 +95,20 @@ export function ContactForm() {
             placeholder="you@example.com"
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "contact-email-error" : undefined}
-            className="mt-control-y"
+            className="contact-input mt-control-y"
             {...register("email")}
           />
           {errors.email && (
-            <p id="contact-email-error" className="mt-control-y text-small text-foreground">
+            <p id="contact-email-error" className="contact-field-error mt-control-y text-small text-foreground">
               {errors.email.message}
             </p>
           )}
         </div>
       </div>
-      <div className="mt-component-gap">
-        <label htmlFor="contact-message" className="font-mono text-label uppercase tracking-label text-muted-foreground">
-          Message
+      <div className="contact-field mt-layout">
+        <label htmlFor="contact-message" className="contact-field-label">
+          <span>Message</span>
+          <span aria-hidden="true">03</span>
         </label>
         <Textarea
           id="contact-message"
@@ -105,11 +116,11 @@ export function ContactForm() {
           placeholder="Tell me a little about what you’re working on."
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? "contact-message-error" : undefined}
-          className="mt-control-y"
+          className="contact-textarea mt-control-y"
           {...register("message")}
         />
         {errors.message && (
-          <p id="contact-message-error" className="mt-control-y text-small text-foreground">
+          <p id="contact-message-error" className="contact-field-error mt-control-y text-small text-foreground">
             {errors.message.message}
           </p>
         )}
@@ -118,11 +129,11 @@ export function ContactForm() {
         <label htmlFor="contact-website">Website</label>
         <input id="contact-website" tabIndex={-1} autoComplete="off" {...register("website")} />
       </div>
-      <div className="mt-layout flex flex-wrap items-center gap-component-gap">
+      <div className="contact-form-actions mt-layout flex flex-wrap items-center gap-component-gap">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-theme-sm bg-primary px-component-gap py-control-y font-label text-label uppercase tracking-label text-primary-foreground transition-opacity duration-motion-fast ease-editorial hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
+          className="contact-submit rounded-theme-sm bg-primary px-component-gap py-control-y font-label text-label uppercase tracking-label text-primary-foreground transition-opacity duration-motion-fast ease-editorial hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isSubmitting ? "Sending…" : "Send message"}
         </button>
@@ -130,7 +141,7 @@ export function ContactForm() {
           <p
             role={status === "error" ? "alert" : "status"}
             aria-live="polite"
-            className={cn("text-small", status === "error" ? "text-foreground" : "text-muted-foreground")}
+            className={cn("contact-form-status text-small", status === "error" ? "text-foreground" : "text-muted-foreground")}
           >
             {statusMessage}
           </p>

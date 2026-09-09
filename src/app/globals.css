@@ -424,6 +424,78 @@ body {
   min-height: var(--about-profile-min-height);
 }
 
+.contact-timeline {
+  position: relative;
+  padding-inline-start: var(--space-layout);
+}
+
+.contact-timeline-track,
+.contact-timeline-progress {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--border-width);
+}
+
+.contact-timeline-track {
+  background: var(--border);
+}
+
+.contact-timeline-progress {
+  background: var(--foreground);
+  transform-origin: top;
+}
+
+.contact-form-header {
+  border-block-start: var(--border-width) solid var(--border);
+  padding-block-start: var(--space-component-gap);
+}
+
+.contact-field-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted-foreground);
+  font-family: var(--font-label);
+  font-size: var(--type-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.contact-field-label span:last-child {
+  color: var(--border-strong);
+}
+
+.contact-input,
+.contact-textarea {
+  border: 0 !important;
+  border-block-end: var(--border-width) solid var(--border) !important;
+  border-radius: 0;
+  background: transparent;
+  padding-inline: 0;
+  box-shadow: none;
+  outline: none !important;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  border-block-end-color: var(--foreground) !important;
+  box-shadow: none;
+  outline: none !important;
+}
+
+.contact-textarea {
+  min-height: 11rem;
+}
+
+.contact-field-error {
+  color: var(--foreground);
+}
+
+.contact-submit {
+  min-width: 10rem;
+}
+
 .contact-graphic {
   position: absolute;
   inset: 0;
