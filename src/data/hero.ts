@@ -12,7 +12,7 @@ export const heroContent: HeroContent = {
     "I build dependable full-stack products and practical AI-powered systems from first idea to production.",
   details: [
     { label: "Based in", value: "Lahore, Pakistan" },
-    { label: "Focus", value: "Full-stack Development" },
+    { label: "Focus", value: "Full-stack & AI systems" },
     { label: "Current role", value: "Associate Software Engineer" },
     { label: "Delivery", value: "Concept to production" },
   ],

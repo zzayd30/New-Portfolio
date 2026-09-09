@@ -3,7 +3,7 @@ import type { AboutContent } from "@/types/about";
 export const aboutContent: AboutContent = {
   sectionNumber: "02",
   eyebrow: "About",
-  introLabel: "Full-stack Developer & AI Enthusiast",
+  introLabel: "Full-stack / AI systems",
   introduction: "Software engineer building full-stack products with practical AI.",
   details: [
     {
@@ -12,7 +12,7 @@ export const aboutContent: AboutContent = {
     },
     {
       label: "Experience",
-      value: "Xavinex, Creamerz Soft, and Faizan-e-Chisht Foundation.",
+      value: "Product and frontend delivery across three teams since 2025.",
     },
     {
       label: "Education",
