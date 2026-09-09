@@ -39,6 +39,23 @@ export function HeroHeading({ content }: HeroHeadingProps) {
     duration: shouldReduceMotion ? 0 : motionTokens.duration.reveal,
     ease: motionTokens.easing.editorial,
   };
+  const headingVariants = {
+    hidden: { opacity: 1 },
+    visible: { opacity: 1 },
+  };
+  const lineVariants = {
+    hidden: { opacity: 0, y: motionTokens.distance.hero },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        ...lineTransition,
+        delay: shouldReduceMotion
+          ? 0
+          : motionTokens.duration.normal + index * motionTokens.stagger,
+      },
+    }),
+  };
 
   return (
     <div className="lg:col-span-8">
@@ -51,29 +68,26 @@ export function HeroHeading({ content }: HeroHeadingProps) {
       >
         {content.role} / {content.sectionNumber}
       </motion.p>
-      <h1
+      <motion.h1
         id="hero-heading"
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewport}
+        variants={headingVariants}
         className="mt-layout font-display text-display font-medium tracking-display text-balance"
       >
         {[content.name.first, content.name.last].map((line, index) => (
           <span key={line} className="block overflow-hidden">
             <motion.span
-              initial={{ opacity: 0, y: motionTokens.distance.hero }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewport}
-              transition={{
-                ...lineTransition,
-                delay: shouldReduceMotion
-                  ? 0
-                  : motionTokens.duration.normal + index * motionTokens.stagger,
-              }}
+              custom={index}
+              variants={lineVariants}
               className="block"
             >
               {line}
             </motion.span>
           </span>
         ))}
-      </h1>
+      </motion.h1>
       <div
         aria-live="polite"
         aria-label="Specialties"
