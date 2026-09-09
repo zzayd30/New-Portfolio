@@ -26,7 +26,7 @@ export function SkillCategory({ category, index }: SkillCategoryProps) {
         delay: shouldReduceMotion ? 0 : index * motionTokens.stagger,
       }}
       aria-labelledby={`skill-category-${index}`}
-      className="skills-category grid gap-component-gap border-b border-border pb-section-gap sm:grid-cols-3 sm:gap-layout first:pt-0 last:border-b-0 last:pb-0"
+      className="skills-category grid gap-component-gap border-b border-border pb-section-gap sm:grid-cols-3 sm:gap-layout first:pt-0 pt-3 last:border-b-0 last:pb-0"
     >
       <div>
         <h3 id={`skill-category-${index}`} className="text-heading font-medium tracking-heading">
@@ -34,7 +34,7 @@ export function SkillCategory({ category, index }: SkillCategoryProps) {
         </h3>
         <p className="mt-control-y text-small text-muted-foreground">{category.description}</p>
       </div>
-      <ul className="skills-category-list border-y border-border sm:col-span-2">
+      <ul className="skills-category-list sm:col-span-2">
         {category.skills.map((skill) => (
           <SkillItem key={skill.name} skill={skill} />
         ))}
