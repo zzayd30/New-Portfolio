@@ -1,0 +1,21 @@
+# dependencies
+/node_modules
+
+# Next.js
+/.next
+/out
+
+# environment files
+.env*
+!.env.example
+
+# debug files
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# private/local source materials
+/prompt.md
+/Muhammad-Zaid-CV-2026.docx
+/Muhammad-Zaid-CV-2026.pdf
+/tsconfig.tsbuildinfo
