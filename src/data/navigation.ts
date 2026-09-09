@@ -9,7 +9,7 @@ export const portfolioSections: PortfolioSection[] = [
     label: "Experience",
     navigationLabel: "Experience",
   },
-  { id: "skills", number: "04", label: "Skills" },
+  { id: "skills", number: "04", label: "Skills", navigationLabel: "Skills" },
   { id: "work", number: "05", label: "Selected Work", navigationLabel: "Work" },
   { id: "contact", number: "06", label: "Contact", navigationLabel: "Contact" },
 ];
