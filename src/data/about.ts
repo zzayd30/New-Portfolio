@@ -3,9 +3,8 @@ import type { AboutContent } from "@/types/about";
 export const aboutContent: AboutContent = {
   sectionNumber: "02",
   eyebrow: "About",
-  introLabel: "Full-stack / AI systems",
-  introduction:
-    "A product-minded software engineer combining full-stack craft with practical AI to ship reliable, maintainable products.",
+  introLabel: "Full-stack Developer & AI Enthusiast",
+  introduction: "Software engineer building full-stack products with practical AI.",
   details: [
     {
       label: "Current role",
@@ -13,15 +12,23 @@ export const aboutContent: AboutContent = {
     },
     {
       label: "Experience",
-      value: "Next.js, MERN, Angular, and AI products since 2025.",
+      value: "Xavinex, Creamerz Soft, and Faizan-e-Chisht Foundation.",
     },
     {
       label: "Education",
       value: "BS Computer Science · UET Lahore · 2022–2026.",
     },
     {
+      label: "Location",
+      value: "Lahore, Pakistan.",
+    },
+    {
       label: "Focus",
-      value: "Full-stack systems · AI integrations · production delivery.",
+      value: "Next.js, React, Node.js, TypeScript, databases, and AI integrations.",
+    },
+    {
+      label: "Delivery",
+      value: "Requirements, APIs, payments, automation, and VPS deployments.",
     },
   ],
   resume: {

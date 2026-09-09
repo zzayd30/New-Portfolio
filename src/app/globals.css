@@ -243,6 +243,33 @@ body {
   padding-inline-start: var(--space-layout);
 }
 
+.about-timeline {
+  position: relative;
+  padding-inline-start: var(--space-layout);
+}
+
+.about-timeline-track,
+.about-timeline-progress {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--border-width);
+}
+
+.about-timeline-track {
+  background: var(--border);
+}
+
+.about-timeline-progress {
+  background: var(--foreground);
+  transform-origin: top;
+}
+
+.about-timeline .about-context {
+  border-inline-start: 0;
+  padding-inline-start: 0;
+}
+
 .about-profile {
   position: relative;
   min-height: var(--about-profile-min-height);
@@ -252,6 +279,7 @@ body {
 }
 
 @media (min-width: 64rem) {
+  .about-section .about-profile,
   .experience-profile {
     position: sticky;
     top: calc(var(--navbar-height) + var(--space-experience-sticky-gap));
