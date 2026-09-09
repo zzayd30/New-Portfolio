@@ -19,7 +19,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     <motion.article
       initial={{ opacity: 0, y: motionTokens.distance.normal }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: false, amount: 0.2 }}
       transition={{
         duration: shouldReduceMotion ? 0 : motionTokens.duration.slow,
         ease: motionTokens.easing.editorial,

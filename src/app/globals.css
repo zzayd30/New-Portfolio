@@ -369,6 +369,86 @@ body {
   transform-origin: top;
 }
 
+.projects-profile {
+  min-height: var(--about-profile-min-height);
+}
+
+.projects-graphic {
+  position: absolute;
+  inset: 0;
+  color: var(--border-strong);
+  opacity: 0.46;
+  pointer-events: none;
+  user-select: none;
+}
+
+.projects-graphic svg {
+  width: 100%;
+  height: 100%;
+}
+
+.projects-graphic-label {
+  position: absolute;
+  inset-block-end: var(--space-component-gap);
+  inset-inline-end: var(--space-component-gap);
+  color: var(--muted-foreground);
+  font-family: var(--font-label);
+  font-size: var(--type-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.projects-timeline {
+  position: relative;
+  padding-inline-start: var(--space-layout);
+}
+
+.projects-timeline-track,
+.projects-timeline-progress {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--border-width);
+}
+
+.projects-timeline-track {
+  background: var(--border);
+}
+
+.projects-timeline-progress {
+  background: var(--foreground);
+  transform-origin: top;
+}
+
+.contact-profile {
+  min-height: var(--about-profile-min-height);
+}
+
+.contact-graphic {
+  position: absolute;
+  inset: 0;
+  color: var(--border-strong);
+  opacity: 0.46;
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact-graphic svg {
+  width: 100%;
+  height: 100%;
+}
+
+.contact-graphic-label {
+  position: absolute;
+  inset-block-end: var(--space-component-gap);
+  inset-inline-end: var(--space-component-gap);
+  color: var(--muted-foreground);
+  font-family: var(--font-label);
+  font-size: var(--type-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
 .experience-timeline {
   position: relative;
   padding-inline-start: var(--space-layout);
@@ -448,7 +528,9 @@ body {
 }
 
 @media (min-width: 64rem) {
-  .skills-profile {
+  .skills-profile,
+  .projects-profile,
+  .contact-profile {
     position: sticky;
     top: calc(var(--navbar-height) + var(--space-experience-sticky-gap));
     align-self: start;
@@ -486,7 +568,9 @@ body {
     min-height: 0;
   }
 
-  .skills-profile {
+  .skills-profile,
+  .projects-profile,
+  .contact-profile {
     min-height: 0;
   }
 
