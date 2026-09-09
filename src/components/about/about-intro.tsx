@@ -16,14 +16,17 @@ export function AboutIntro({ content }: AboutIntroProps) {
     <motion.div
       initial={{ opacity: 0, y: motionTokens.distance.normal }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.35 }}
+      viewport={{ once: false, amount: 0.45 }}
       transition={{
         duration: shouldReduceMotion ? 0 : motionTokens.duration.slow,
         ease: motionTokens.easing.editorial,
       }}
-      className="lg:col-span-8 lg:col-start-5"
+      className="mt-layout"
     >
-      <h2 id="about-heading" className="text-heading-xl font-medium tracking-heading text-balance">
+      <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+        {content.introLabel}
+      </p>
+      <h2 id="about-heading" className="mt-layout max-w-prose text-heading font-medium tracking-heading text-balance">
         {content.introduction}
       </h2>
     </motion.div>

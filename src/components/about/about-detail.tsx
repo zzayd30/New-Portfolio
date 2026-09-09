@@ -17,13 +17,13 @@ export function AboutDetail({ detail, index }: AboutDetailProps) {
     <motion.div
       initial={{ opacity: 0, y: motionTokens.distance.small }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: false, amount: 0.35 }}
       transition={{
         duration: shouldReduceMotion ? 0 : motionTokens.duration.normal,
         ease: motionTokens.easing.enter,
         delay: shouldReduceMotion ? 0 : index * motionTokens.stagger,
       }}
-      className="grid gap-control-y border-b border-border py-card sm:grid-cols-3 sm:gap-layout"
+      className="grid gap-control-y border-b border-border py-card sm:grid-cols-3 sm:gap-layout lg:grid-cols-1 lg:gap-control-y"
     >
       <dt className="font-mono text-label uppercase tracking-label text-muted-foreground">
         {detail.label}

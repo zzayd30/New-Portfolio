@@ -10,8 +10,11 @@ interface AboutDetailsProps {
 
 export function AboutDetails({ content }: AboutDetailsProps) {
   return (
-    <div className="lg:col-span-8 lg:col-start-5">
-      <dl className="border-t border-border">
+    <div className="about-context lg:col-span-4 lg:col-start-9">
+      <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+        Professional context
+      </p>
+      <dl className="mt-layout border-t border-border">
         {content.details.map((detail, index) => (
           <AboutDetail key={detail.label} detail={detail} index={index} />
         ))}

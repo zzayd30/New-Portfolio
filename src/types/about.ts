@@ -6,6 +6,7 @@ export interface AboutDetail {
 export interface AboutContent {
   sectionNumber: string;
   eyebrow: string;
+  introLabel: string;
   introduction: string;
   details: AboutDetail[];
   resume: {
