@@ -64,6 +64,7 @@
   --about-profile-min-height: clamp(24rem, 52vh, 38rem);
   --about-scroll-margin: -3rem;
   --navbar-height: 4.5rem;
+  --space-experience-sticky-gap: 5rem;
   --navbar-min-width: 19rem;
   --hero-min-height: 100svh;
   --hero-content-min-height: calc(100svh - var(--navbar-height));
@@ -250,6 +251,14 @@ body {
   background: var(--surface);
 }
 
+@media (min-width: 64rem) {
+  .experience-profile {
+    position: sticky;
+    top: calc(var(--navbar-height) + var(--space-experience-sticky-gap));
+    align-self: start;
+  }
+}
+
 .about-profile-content {
   padding: var(--space-layout);
 }
@@ -279,9 +288,81 @@ body {
   text-transform: uppercase;
 }
 
+.experience-graphic {
+  position: absolute;
+  inset: 0;
+  color: var(--border-strong);
+  opacity: 0.46;
+  pointer-events: none;
+  user-select: none;
+}
+
+.experience-graphic svg {
+  width: 100%;
+  height: 100%;
+}
+
+.experience-graphic-label {
+  position: absolute;
+  inset-block-end: var(--space-component-gap);
+  inset-inline-end: var(--space-component-gap);
+  color: var(--muted-foreground);
+  font-family: var(--font-label);
+  font-size: var(--type-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
 .experience-timeline {
   position: relative;
   padding-inline-start: var(--space-layout);
+}
+
+.experience-item {
+  position: relative;
+}
+
+.experience-item-marker {
+  position: absolute;
+  inset-block-start: var(--space-component-gap);
+  inset-inline-start: calc(0px - var(--space-layout) - 0.25rem);
+  width: 0.5rem;
+  height: 0.5rem;
+  border: var(--border-width-strong) solid var(--foreground);
+  border-radius: 999px;
+  background: var(--background);
+}
+
+.experience-item-company {
+  color: var(--foreground);
+  font-family: var(--font-label);
+  font-size: var(--type-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.experience-item-role {
+  max-width: 34rem;
+}
+
+.experience-item-summary {
+  max-width: 42rem;
+}
+
+.experience-item-outcomes {
+  border-block-start: var(--border-width) solid var(--border);
+  padding-block-start: var(--space-component-gap);
+}
+
+.experience-item-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.experience-item-stack li {
+  border: var(--border-width) solid var(--border);
+  padding: 0.35rem 0.6rem;
 }
 
 .experience-timeline-track,

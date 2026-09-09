@@ -4,7 +4,11 @@ import { motion, useReducedMotion } from "motion/react";
 
 import { motionTokens } from "@/lib/motion";
 
-export function AboutGraphic() {
+interface AboutGraphicProps {
+  label?: string;
+}
+
+export function AboutGraphic({ label = "SYSTEMS / 02" }: AboutGraphicProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -36,7 +40,7 @@ export function AboutGraphic() {
           <circle cx="181" cy="459" r="4" />
         </g>
       </svg>
-      <span className="about-graphic-label">SYSTEMS / 02</span>
+      <span className="about-graphic-label">{label}</span>
     </motion.div>
   );
 }

@@ -23,35 +23,43 @@ export function ExperienceItem({ item, index }: ExperienceItemProps) {
         ease: motionTokens.easing.editorial,
         delay: shouldReduceMotion ? 0 : index * motionTokens.stagger,
       }}
-      className="border-b border-border py-layout first:pt-0 last:border-b-0 last:pb-0"
+      className="experience-item border-b border-border py-layout first:pt-0 last:border-b-0 last:pb-0"
     >
+      <span aria-hidden="true" className="experience-item-marker" />
       <div className="grid gap-component-gap lg:grid-cols-editorial">
         <p className="font-mono text-label uppercase tracking-label text-muted-foreground lg:col-span-3">
           {item.endDate ? `${item.startDate} — ${item.endDate}` : item.startDate}
         </p>
         <div className="lg:col-span-9">
-          <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+          <p className="experience-item-company">
             {item.company}
           </p>
-          <h3 className="mt-control-y text-heading font-medium tracking-heading">{item.role}</h3>
-          <p className="mt-component-gap max-w-prose text-body text-muted-foreground">
+          <h3 className="experience-item-role mt-control-y text-heading font-medium tracking-heading">
+            {item.role}
+          </h3>
+          <p className="experience-item-summary mt-component-gap text-body text-muted-foreground">
             {item.summary}
           </p>
-          <ul className="mt-layout space-y-component-gap">
-            {item.achievements.map((achievement) => (
-              <li key={achievement} className="flex gap-control-x text-body text-foreground">
-                <span aria-hidden="true" className="text-muted-foreground">
-                  —
-                </span>
-                <span>{achievement}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="experience-item-outcomes mt-layout">
+            <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+              Selected outcomes
+            </p>
+            <ul className="mt-component-gap space-y-component-gap">
+              {item.achievements.map((achievement) => (
+                <li key={achievement} className="flex gap-control-x text-body text-foreground">
+                  <span aria-hidden="true" className="text-muted-foreground">
+                    —
+                  </span>
+                  <span>{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="mt-layout border-t border-border pt-component-gap">
             <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
               Technologies
             </p>
-            <ul className="mt-control-y flex flex-wrap gap-x-component-gap gap-y-control-y">
+            <ul className="experience-item-stack mt-control-y">
               {item.stack.map((technology) => (
                 <li key={technology} className="font-mono text-label tracking-label text-foreground">
                   {technology}
