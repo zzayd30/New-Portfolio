@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 
+import { Footer } from "@/components/layout/footer/footer";
 import { Navbar } from "@/components/layout/navbar/navbar";
 import { SectionProgress } from "@/components/layout/section-progress/section-progress";
 import { portfolioSections } from "@/data/navigation";
@@ -23,6 +24,7 @@ export function PageShell({ children }: PageShellProps) {
     <>
       <Navbar />
       <main>{children}</main>
+      <Footer />
       {/* <SectionProgress
         activeSection={activeSection}
         activeIndex={activeIndex}

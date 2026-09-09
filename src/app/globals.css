@@ -206,6 +206,36 @@ body {
   max-inline-size: 100%;
 }
 
+.site-footer {
+  padding-block: var(--space-layout) var(--space-card);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-layout);
+}
+
+.footer-nav-list {
+  display: grid;
+  gap: var(--space-control-y);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-component-gap);
+  margin-block-start: var(--space-layout);
+  padding-block-start: var(--space-component-gap);
+}
+
+@media (min-width: 48rem) {
+  .footer-grid {
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: var(--space-section-gap);
+  }
+}
+
 ::selection {
   background: var(--primary);
   color: var(--primary-foreground);
