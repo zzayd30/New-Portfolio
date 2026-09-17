@@ -13,7 +13,7 @@ export function HeroSection() {
       className="chapter-section flex min-h-hero bg-background pt-navbar"
     >
       <Container size="display" className="flex min-h-hero-content flex-col py-layout">
-        <div className="hero-stage grid gap-layout lg:grid-cols-editorial lg:items-center xl:gap-section-gap">
+        <div className="hero-stage grid gap-layout lg:grid-cols-editorial lg:items-center xl:gap-layout">
           <HeroHeading content={heroContent} />
           <HeroIntro content={heroContent} />
         </div>
