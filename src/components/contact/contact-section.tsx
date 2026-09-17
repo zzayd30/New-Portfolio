@@ -72,10 +72,10 @@ export function ContactSection() {
                 duration: shouldReduceMotion ? 0 : motionTokens.duration.slow,
                 ease: motionTokens.easing.editorial,
               }}
-              className="contact-content"
+              className="contact-content xl:mr-layout 2xl:mr-0"
             >
               <ContactDetails content={contactContent} />
-              <div className="mt-section-gap border-t border-border pt-section-gap">
+              <div className="mt-section-gap border-t border-border pt-section-gap ">
                 <ContactForm />
               </div>
             </motion.div>

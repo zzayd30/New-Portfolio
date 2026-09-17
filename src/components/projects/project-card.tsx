@@ -25,50 +25,52 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         ease: motionTokens.easing.editorial,
         delay: shouldReduceMotion ? 0 : index * motionTokens.stagger,
       }}
-      className="border-b border-border py-section first:pt-0"
+      className="border-b border-border py-section first:pt-0 xl:mr-layout 2xl:mr-0"
     >
-      <div className="grid gap-layout lg:grid-cols-editorial">
-        <div className="flex items-baseline justify-between gap-component-gap lg:col-span-3 lg:block">
-          <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
-            {String(index + 1).padStart(2, "0")} / {project.type}
-          </p>
-          <p className="font-mono text-label uppercase tracking-label text-muted-foreground lg:mt-control-y">
-            Featured work
-          </p>
-        </div>
-        <div className="lg:col-span-9">
-          <h3 className="text-heading-lg font-medium tracking-heading">{project.title}</h3>
-          <p className="mt-component-gap max-w-reading text-body text-muted-foreground">
-            {project.shortDescription}
-          </p>
-          <dl className="mt-layout grid gap-layout border-t border-border pt-component-gap sm:grid-cols-2">
-            <div>
-              <dt className="font-mono text-label uppercase tracking-label text-muted-foreground">
-                Context
-              </dt>
-              <dd className="mt-control-y text-small text-foreground">{project.context}</dd>
-            </div>
-            <div>
-              <dt className="font-mono text-label uppercase tracking-label text-muted-foreground">
-                Contribution
-              </dt>
-              <dd className="mt-control-y text-small text-foreground">{project.contribution}</dd>
-            </div>
-          </dl>
-          <div className="mt-layout">
-            <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
-              Stack
-            </p>
-            <ul className="mt-control-y flex flex-wrap gap-x-component-gap gap-y-control-y">
-              {project.technologies.map((technology) => (
-                <li key={technology} className="font-mono text-label tracking-label text-foreground">
-                  {technology}
-                </li>
-              ))}
-            </ul>
+      <div>
+        <p className="mb-control-y font-mono text-label uppercase tracking-label text-muted-foreground">
+          {String(index + 1).padStart(2, "0")} / {project.type}
+        </p>
+        <h3 className="text-heading-lg font-medium tracking-heading">
+          {project.title}
+        </h3>
+        <p className="mt-component-gap max-w-reading text-body text-muted-foreground">
+          {project.shortDescription}
+        </p>
+        <dl className="mt-layout grid gap-layout border-t border-border pt-component-gap sm:grid-cols-2">
+          <div>
+            <dt className="font-mono text-label uppercase tracking-label text-muted-foreground">
+              Context
+            </dt>
+            <dd className="mt-control-y text-small text-foreground">
+              {project.context}
+            </dd>
           </div>
-          <ProjectLinks project={project} />
+          <div>
+            <dt className="font-mono text-label uppercase tracking-label text-muted-foreground">
+              Contribution
+            </dt>
+            <dd className="mt-control-y text-small text-foreground">
+              {project.contribution}
+            </dd>
+          </div>
+        </dl>
+        <div className="mt-layout">
+          <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
+            Stack
+          </p>
+          <ul className="mt-control-y flex flex-wrap gap-x-component-gap gap-y-control-y">
+            {project.technologies.map((technology) => (
+              <li
+                key={technology}
+                className="font-mono text-label tracking-label text-foreground"
+              >
+                {technology}
+              </li>
+            ))}
+          </ul>
         </div>
+        <ProjectLinks project={project} />
       </div>
     </motion.article>
   );

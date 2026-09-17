@@ -10,7 +10,7 @@ interface AboutDetailsProps {
 
 export function AboutDetails({ content }: AboutDetailsProps) {
   return (
-    <div className="about-context lg:col-span-4 lg:col-start-9">
+    <div className="about-context lg:col-span-4 lg:col-start-9 xl:mr-layout 2xl:mr-0">
       <p className="font-mono text-label uppercase tracking-label text-muted-foreground">
         Professional context
       </p>

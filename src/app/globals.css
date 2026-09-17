@@ -629,6 +629,11 @@ body {
   text-transform: uppercase;
 }
 
+.experience-item-meta {
+  display: grid;
+  gap: var(--space-control-y);
+}
+
 .experience-item-role {
   max-width: 34rem;
 }
