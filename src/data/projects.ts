@@ -3,42 +3,58 @@ import type { ProjectsContent } from "@/types/project";
 export const projectsContent: ProjectsContent = {
   sectionNumber: "05",
   eyebrow: "Selected Work",
-  heading: "A selection of products built around useful, real-world interactions.",
+  heading: "Professional products built across AI, commerce, and operational workflows.",
   projects: [
     {
-      title: "AI Financify",
-      type: "Open-source finance platform",
+      title: "Planet Opus",
+      type: "AI commerce platform",
       shortDescription:
-        "A personal finance platform for managing income, expenses, budgets, and multi-account transactions.",
+        "An AI-powered sticker commerce platform that turns text prompts or reference images into purchasable physical products.",
       context:
-        "Designed as a practical, open-source home for everyday financial information and planning.",
+        "The platform connects generative design, community discovery, cart and checkout flows, order tracking, and operational administration.",
       contribution:
-        "Built the platform end to end, including AI-powered receipt scanning for faster transaction capture.",
-      technologies: ["Next.js", "Node.js", "PostgreSQL", "Generative AI"],
+        "Contributed across generation, authentication, catalog, cart, server-side pricing, Stripe payments, image storage, moderation, and analytics workflows.",
+      technologies: ["Next.js", "TypeScript", "MongoDB", "Stripe", "Cloudinary", "Generative AI"],
+      liveUrl: "https://planetopus.com/",
       featured: true,
     },
     {
-      title: "ClothEase",
-      type: "E-commerce platform",
+      title: "VLN",
+      type: "AI-assisted household finance platform",
       shortDescription:
-        "A full-stack clothing e-commerce experience for browsing products, managing a cart, and checking out.",
+        "A bilingual finance platform that turns uploaded invoices into structured expenses and helps households manage recurring costs, budgets, debts, and income.",
       context:
-        "A focused commerce product designed around the essential path from product discovery to purchase.",
+        "The product combines invoice processing, recurring transaction automation, household roles and permissions, financial dashboards, and secure document storage.",
       contribution:
-        "Built the full-stack application, including product browsing, cart management, and checkout functionality.",
-      technologies: ["MongoDB", "Express", "React", "Node.js"],
+        "Built invoice upload and review flows, AI-assisted field extraction, recurring expense processing, dashboard summaries, authentication, household access controls, and financial data isolation.",
+      technologies: ["Next.js", "TypeScript", "MongoDB", "OpenAI", "Node.js", "Recharts", "S3 storage"],
+      liveUrl: "http://xaviatlas.com/",
       featured: true,
     },
     {
-      title: "ChatEase",
-      type: "Real-time messaging platform",
+      title: "Studio 424",
+      type: "Workspace booking platform",
       shortDescription:
-        "A real-time communication product with instant messaging and file sharing.",
+        "A full-stack booking platform for discovering coworking spaces, managing memberships, and completing secure payments.",
       context:
-        "Explores the product and engineering requirements of responsive, persistent digital communication.",
+        "The system combines public space discovery, authenticated customer portals, booking availability, memberships, payments, and administrative operations.",
       contribution:
-        "Built the client and server experience with WebSocket-based messaging and file-sharing workflows.",
-      technologies: ["React", "Node.js", "WebSockets"],
+        "Implemented discovery and filtering, booking rules, overlap prevention, Stripe checkout and webhooks, cancellation and refund workflows, and responsive admin tools.",
+      technologies: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "TypeORM", "Stripe"],
+      liveUrl: "https://studio424chicago.com/",
+      featured: true,
+    },
+    {
+      title: "NECTY",
+      type: "B2B SaaS platform",
+      shortDescription:
+        "An AI-assisted opportunity monitoring platform that helps businesses discover prospects, manage outreach, and monitor performance.",
+      context:
+        "A multi-workspace product with onboarding, subscriptions, workspace invitations, opportunity management, notifications, and business insights.",
+      contribution:
+        "Built dashboard, onboarding, workspace, notification, billing, and insight workflows while coordinating frontend contracts with internal data-processing services.",
+      technologies: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Stripe", "AI workflows"],
+      liveUrl: "http://app.necty.ai/",
       featured: true,
     },
   ],

@@ -28,12 +28,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       className="border-b border-border py-section first:pt-0 xl:mr-layout 2xl:mr-0"
     >
       <div>
-        <p className="mb-control-y font-mono text-label uppercase tracking-label text-muted-foreground">
+        <div className="flex items-start justify-between gap-component-gap">
+          <h3 className="min-w-0 text-heading-lg font-medium tracking-heading">
+            {project.title}
+          </h3>
+          <ProjectLinks project={project} />
+        </div>
+        <p className="mt-control-y font-mono text-label uppercase tracking-label text-muted-foreground">
           {String(index + 1).padStart(2, "0")} / {project.type}
         </p>
-        <h3 className="text-heading-lg font-medium tracking-heading">
-          {project.title}
-        </h3>
         <p className="mt-component-gap max-w-reading text-body text-muted-foreground">
           {project.shortDescription}
         </p>
@@ -70,7 +73,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             ))}
           </ul>
         </div>
-        <ProjectLinks project={project} />
       </div>
     </motion.article>
   );

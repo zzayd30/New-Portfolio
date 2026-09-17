@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 
 import type { Project } from "@/types/project";
+import { cn } from "@/lib/utils";
 
 interface ProjectLinksProps {
   project: Project;
@@ -8,25 +9,35 @@ interface ProjectLinksProps {
 
 export function ProjectLinks({ project }: ProjectLinksProps) {
   const links = [
-    project.liveUrl ? { label: "Live site", href: project.liveUrl } : undefined,
+    project.liveUrl
+      ? { label: "View live project", href: project.liveUrl, primary: true }
+      : undefined,
     project.repositoryUrl ? { label: "Repository", href: project.repositoryUrl } : undefined,
-  ].filter((link): link is { label: string; href: string } => Boolean(link));
+  ].filter(
+    (link): link is { label: string; href: string; primary?: boolean } => Boolean(link),
+  );
 
   if (links.length === 0) {
     return null;
   }
 
   return (
-    <ul className="mt-layout flex flex-wrap gap-x-layout gap-y-control-y">
+    <ul className="flex shrink-0 items-center gap-control-x">
       {links.map((link) => (
         <li key={link.href}>
           <a
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-control-x font-label text-label uppercase tracking-label text-foreground transition-opacity duration-motion-fast ease-editorial hover:opacity-60"
+            aria-label={link.label}
+            title={link.label}
+            className={cn(
+              "group inline-flex size-control-height items-center justify-center rounded-theme-sm border transition-colors duration-motion-fast ease-editorial",
+              link.primary
+                ? "border-foreground text-foreground hover:bg-foreground hover:text-primary-foreground"
+                : "border-border text-foreground hover:border-foreground",
+            )}
           >
-            {link.label}
             <ArrowUpRight
               aria-hidden="true"
               className="size-icon transition-transform duration-motion-fast ease-editorial group-hover:-translate-y-icon-nudge group-hover:translate-x-icon-nudge"

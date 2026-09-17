@@ -14,7 +14,7 @@ export const experienceContent: ExperienceContent = {
       summary:
         "Developing AI-powered web products from early requirements through production deployment, with direct client collaboration throughout the process.",
       achievements: [
-        "Delivered 5+ AI-powered web applications from development through production.",
+        "Delivered 7+ AI-powered web applications from development through production.",
         "Built AI workflows, REST APIs, authentication, and third-party integrations for production-ready client features.",
         "Implemented Stripe and PayPal payment flows alongside automation and data-processing workflows using Apify, Airtable, and Make.com.",
         "Managed VPS deployments and translated client requirements into maintainable technical solutions.",
